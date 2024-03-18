@@ -9,9 +9,9 @@ pipeline {
         stage('connect to server') {
             steps {
                 echo 'Hello, World! fuck you'
-                sh 'chmod 400 RDP_key.pem'
+                sh 'chmod 400 RDP_key.pem/'
                 echo 'chmod done'
-                sh 'ssh -i RDP_key.pem ubuntu@ec2-15-206-194-50.ap-south-1.compute.amazonaws.com'
+                sh 'ssh -i RDP_key.pem/ ubuntu@ec2-15-206-194-50.ap-south-1.compute.amazonaws.com'
                 sh 'ls'
                 sh 'exit'
             }
