@@ -1,19 +1,23 @@
 pipeline {
-    agent {
-        node {
-            label 'agent_01'
-        }
-    }
+    agent any
     
     stages {
-        stage('connect to server') {
+        stage('SSH to EC2 Instance') {
             steps {
-                echo 'Hello, World! fuck you'
-                sh 'chmod 400 RDP_key.pem/'
-                echo 'chmod done'
-                sh 'ssh -i RDP_key.pem/ ubuntu@ec2-15-206-194-50.ap-south-1.compute.amazonaws.com'
-                sh 'ls'
-                sh 'exit'
+                script {
+                    // Change the permissions of the private key file
+                    sh 'chmod 400 RDP_key.pem'
+                    echo 'chmod done'
+                    
+                    // SSH into the EC2 instance using the private key
+                    sh '''
+                        ssh -i RDP_key.pem ubuntu@ec2-15-206-194-50.ap-south-1.compute.amazonaws.com << 'EOF'
+                        # Commands to execute on the EC2 instance
+                        # For example:
+                        ls -la
+                        EOF
+                    '''
+                }
             }
         }
     }
