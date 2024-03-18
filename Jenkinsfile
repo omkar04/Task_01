@@ -6,6 +6,7 @@ pipeline {
             steps {
                 script {
                     // Change the permissions of the private key file
+                    echo 'done'
                     sh 'ls'
                     sh 'chmod 400 RDP_key.pem'
                     echo 'chmod done'
