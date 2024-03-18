@@ -16,6 +16,7 @@ pipeline {
                     bat 'ssh -i "RDP_key.pem" %user%@%Public DNS%'
                     echo "connected"
                     bat 'dir'
+                    bat '%command%'
                     bat  'exit'
                     
                 }
