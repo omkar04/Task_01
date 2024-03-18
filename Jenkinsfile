@@ -8,7 +8,7 @@ pipeline {
                     // Change the permissions of the private key file
                     echo 'done'
                    // bat 'uname'
-                    bat 'chmod 400 "RDP_key.pem"'
+                    bat 'icacls "RDP_key.pem" /inheritance:r /grant:r "%USERNAME%":R"'
                     echo 'chmod done'
                     
                     // SSH into the EC2 instance using the private key
