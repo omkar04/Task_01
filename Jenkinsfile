@@ -6,9 +6,11 @@ pipeline {
     }
     
     stages {
-        stage('Hello') {
+        stage('connect to server') {
             steps {
                 echo 'Hello, World!'
+                sh 'chmod 400 "RDP_key.pem"'
+                sh 'ssh -i "RDP_key.pem" ubuntu@ec2-15-206-194-50.ap-south-1.compute.amazonaws.com'
             }
         }
     }
