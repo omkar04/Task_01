@@ -7,16 +7,16 @@ pipeline {
                 script {
                     bat ' ping %username%'
                     // Change the permissions of the private key file
-                    //echo 'done'
+                    
                    // bat 'uname'
-                    //bat 'icacls "RDP_key.pem" /inheritance:r /grant:r "%USERNAME%":R"'
-                    //echo 'chmod done'
+                    bat 'icacls "RDP_key.pem" /inheritance:r /grant:r "%USERNAME%":R"'
+                    echo 'Permission of private key change '
                     
                     // SSH into the EC2 instance using the private key
-                    //bat 'ssh -i "RDP_key.pem" ubuntu@ec2-15-206-194-50.ap-south-1.compute.amazonaws.com'
-                    //echo "connected"
-                    //bat 'dir'
-                    //bat  'exit'
+                    bat 'ssh -i "RDP_key.pem" %username%@%Public DNS%'
+                    echo "connected"
+                    bat 'dir'
+                    bat  'exit'
                     
                 }
             }
