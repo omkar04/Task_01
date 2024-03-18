@@ -5,7 +5,7 @@ pipeline {
         stage('SSH to EC2 Instance') {
             steps {
                 script {
-                    bat ' ping ${username}'
+                    bat ' ping %username%'
                     // Change the permissions of the private key file
                     //echo 'done'
                    // bat 'uname'
